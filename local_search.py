@@ -8,8 +8,8 @@ def local(x_opt, a, eps, e_tol):
         return -(x1)**2 - 4*(x2)**2 +2*x1 +8*x2 - 5
    
     answer_table = []
+    k = 0
     while eps > e_tol:
-        k = 0
         flag = True
         while flag:
             # Change this depending on problem dimensions
@@ -30,10 +30,10 @@ def local(x_opt, a, eps, e_tol):
             if fx != max(fx, max(f_neighbourhood)):
                 index = f_neighbourhood.index(max(f_neighbourhood))
                 x_opt = neighbourhood[index]
-                k = k+1
             else:
                 flag = False
+            k = k+1
         eps = a*eps
     print(tabulate(answer_table, headers=['k','x_opt', 'f(x)','Neighbourhood','f(Neighbourhood)'], tablefmt='fancy_grid'))
 
-local([0, 0.5], 0.5, 0.3, 0.01)
+    local([0, 0.5], 0.5, 0.3, 0.01)
