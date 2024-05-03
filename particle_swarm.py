@@ -6,7 +6,7 @@ def particle_swarm(S, x_ini, iterations, w, C1, C2, random_num):
 
     def f(x):
         # Change for specific problem
-        return 20 + x[0]**2 + x[1]**2 -10*(math.cos(2*math.pi*x[0]) + math.cos(2*math.pi*x[1]))
+        return -x[0]**3 +3*x[0] - x[1]**2
     
     #Initialize swarm:
     x = np.array((S, 2))
@@ -46,4 +46,5 @@ def particle_swarm(S, x_ini, iterations, w, C1, C2, random_num):
     
 # Change for specific problem
 x_initial = np.array([[0.3, -0.2], [-0.9, 0.5], [-0.4, 0.5], [0.9, 0.7], [-0.4, -0.5]])
-particle_swarm(5, x_initial, 6, 0.8, 0.2, 0.2, [])
+random_num = [0.43, 0.32, 0.77, 0.52, 0.45, 0.31, 0.98, 0.04, 0.89, 0.91, 0.46, 0.65, 0.12, 0.68, 0.81, 0.91, 0.13, 0.91, 0.63, 0.10, 0.28, 0.55, 0.96, 0.96, 0.16, 0.97, 0.96, 0.49, 0.80, 0.14, 0.42, 0.92, 0.79, 0.96, 0.66, 0.04, 0.85, 0.93, 0.68, 0.76, 0.74, 0.39, 0.66, 0.17]
+particle_swarm(5, x_initial, 6, 0.8, 0.2, 0.2, random_num)
