@@ -5,6 +5,7 @@ from tabulate import tabulate
 def particle_swarm(S, x_ini, iterations, w, C1, C2, p1, p2):
 
     def f(x):
+        # Change for specific problem
         return 20 + x[0]**2 + x[1]**2 -10*(math.cos(2*math.pi*x[0]) + math.cos(2*math.pi*x[1]))
     
     #Initialize swarm:
@@ -35,7 +36,7 @@ def particle_swarm(S, x_ini, iterations, w, C1, C2, p1, p2):
             #Change for specific problem
             if f(x[i]) > f(p_best[i]):
                 p_best[i] = x[i]
-            
+        # Change for specific problem
         for i in range(S):
             if f(x[i]) > f(x_opt):
                 x_opt = x[i]
@@ -43,6 +44,6 @@ def particle_swarm(S, x_ini, iterations, w, C1, C2, p1, p2):
         answer_table.append(row)        
     print(tabulate(answer_table, headers=['t','Particles', 'p_best', 'x_opt','Velocities','Objective function values'], tablefmt='fancy_grid'))
     
-    
+# Change for specific problem
 x_initial = np.array([[0.3, -0.2], [-0.9, 0.5], [-0.4, 0.5], [0.9, 0.7], [-0.4, -0.5]])
 particle_swarm(5, x_initial, 6, 0.8, 0.2, 0.2, 0.5, 0.5)
