@@ -2,7 +2,7 @@ import numpy as np
 import math
 from tabulate import tabulate
 
-def particle_swarm(S, x_ini, iterations, w, C1, C2, p1, p2):
+def particle_swarm(S, x_ini, iterations, w, C1, C2, random_num):
 
     def f(x):
         # Change for specific problem
@@ -24,12 +24,12 @@ def particle_swarm(S, x_ini, iterations, w, C1, C2, p1, p2):
             x_opt = x[i]
 
     for t in range(iterations):
-        # p1 = random_num.pop(0)
-        # p2 = random_num.pop(0)
         row = [t, str(x), str(p_best), str(x_opt), str(velocities), str(f_values)]
         f_values.clear()
         
-        for i in range(S):            
+        for i in range(S):   
+            p1 = random_num.pop(0)
+            p2 = random_num.pop(0)         
             velocities[i] = w*velocities[i] + p1*C1*(p_best[i] - x[i]) + p2*C2*(x_opt - x[i])
             x[i] = x[i] + velocities[i]
 
@@ -46,4 +46,4 @@ def particle_swarm(S, x_ini, iterations, w, C1, C2, p1, p2):
     
 # Change for specific problem
 x_initial = np.array([[0.3, -0.2], [-0.9, 0.5], [-0.4, 0.5], [0.9, 0.7], [-0.4, -0.5]])
-particle_swarm(5, x_initial, 6, 0.8, 0.2, 0.2, 0.5, 0.5)
+particle_swarm(5, x_initial, 6, 0.8, 0.2, 0.2, [])
